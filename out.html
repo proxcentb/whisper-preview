@@ -1,27 +1,45 @@
 
-    <html lang="en">
-      <head>
-        <style>
-          .data-block {
-            border-radius: 10px;
-            padding: 5px 30px;
-            margin-bottom: 10px;
-            max-width: 50vw;
+<html lang="en">
+  <head>
+    <style>
+      .data-block {
+        border-radius: 10px;
+        padding: 5px 30px;
+        margin-bottom: 10px;
+        max-width: 50vw;
+      }
+      .highlighted {
+        background: #ff7878;
+        padding: 0 2px;
+        border-radius: 5px;
+      }
+    </style>
+    <script>
+      const jumptoTime = () => document.getElementById('player').currentTime = Number(event.target.id);
+      let highlightedElement = null;
+      function updateBg(time) {
+        const words = Array.from(document.querySelectorAll('a'));
+        for (let i = 0; i < words.length; i++) {
+          const el = words[i];
+          if (highlightedElement !== el && el.id && Number(el.id) > Number(time)) {
+            if (highlightedElement) highlightedElement.classList.remove('highlighted')
+            highlightedElement = words[i - 1];
+            highlightedElement.classList.add('highlighted')
+            break;
           }
-        </style>
-        <script>
-          const jumptoTime = () => document.getElementById('player').currentTime = Number(event.target.id);
-        </script>
-      </head>
-      <body style="font-family: sans-serif; font-size: 18px; background-color: #efe7dd;">
-        <video id="player" controls style="max-width: 40vw; position: sticky; float: right; top: 20px">
-          <source src="video.mp4" type="video/mp4" />
-        </video>
-        
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_00</span>
-          <br>
-      <a id="0.129" onclick="jumptoTime()">I</a>
+        }
+      }
+    </script>
+  </head>
+  <body style="font-family: sans-serif; font-size: 18px; background-color: #efe7dd;">
+    <video ontimeupdate="updateBg(this.currentTime)" id="player" controls style="max-width: 40vw; position: sticky; float: right; top: 20px">
+      <source src="video.mp4" type="video/mp4" />
+    </video>
+    
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_00</span>
+      <br>
+  <a id="0.129" onclick="jumptoTime()">I</a>
 <a id="0.229" onclick="jumptoTime()">can</a>
 <a id="0.47" onclick="jumptoTime()">record.</a>
 <a id="3.072" onclick="jumptoTime()">And</a>
@@ -178,10 +196,10 @@
 <a id="70.755" onclick="jumptoTime()">updated</a>
 <a id="71.135" onclick="jumptoTime()">yet.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_05</span>
-          <br>
-      <a id="72.336" onclick="jumptoTime()">I</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_05</span>
+      <br>
+  <a id="72.336" onclick="jumptoTime()">I</a>
 <a id="72.436" onclick="jumptoTime()">thought</a>
 <a id="72.676" onclick="jumptoTime()">we</a>
 <a id="72.856" onclick="jumptoTime()">had</a>
@@ -196,10 +214,10 @@
 <a id="75.477" onclick="jumptoTime()">them</a>
 <a id="75.697" onclick="jumptoTime()">out.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_00</span>
-          <br>
-      <a id="76.772" onclick="jumptoTime()">That's</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_00</span>
+      <br>
+  <a id="76.772" onclick="jumptoTime()">That's</a>
 <a id="77.732" onclick="jumptoTime()">so</a>
 <a id="77.933" onclick="jumptoTime()">I</a>
 <a id="78.013" onclick="jumptoTime()">guess</a>
@@ -272,10 +290,10 @@
 <a id="112.879" onclick="jumptoTime()">GTM</a>
 <a id="113.4" onclick="jumptoTime()">teams?</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_03</span>
-          <br>
-      <a id="117.543" onclick="jumptoTime()">On</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_03</span>
+      <br>
+  <a id="117.543" onclick="jumptoTime()">On</a>
 <a id="117.663" onclick="jumptoTime()">Slack</a>
 <a id="118.143" onclick="jumptoTime()">only</a>
 <a id="118.944" onclick="jumptoTime()">and</a>
@@ -284,10 +302,10 @@
 <a id="119.604" onclick="jumptoTime()">issue</a>
 <a id="120.045" onclick="jumptoTime()">actually.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_07</span>
-          <br>
-      <a id="120.926" onclick="jumptoTime()">Yeah,</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_07</span>
+      <br>
+  <a id="120.926" onclick="jumptoTime()">Yeah,</a>
 <a id="121.526" onclick="jumptoTime()">same,</a>
 <a id="122.327" onclick="jumptoTime()">not</a>
 <a id="122.507" onclick="jumptoTime()">in</a>
@@ -338,10 +356,10 @@
 <a id="135.56" onclick="jumptoTime()">more</a>
 <a id="135.7" onclick="jumptoTime()">feedback.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_00</span>
-          <br>
-      <a id="138.722" onclick="jumptoTime()">Yeah.</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_00</span>
+      <br>
+  <a id="138.722" onclick="jumptoTime()">Yeah.</a>
 <a id="138.982" onclick="jumptoTime()">Do</a>
 <a id="139.122" onclick="jumptoTime()">y'all,</a>
 <a id="139.582" onclick="jumptoTime()">um,</a>
@@ -362,10 +380,10 @@
 <a id="146.147" onclick="jumptoTime()">is</a>
 <a id="146.267" onclick="jumptoTime()">there.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_01</span>
-          <br>
-      <a id="146.507" onclick="jumptoTime()">Yeah,</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_01</span>
+      <br>
+  <a id="146.507" onclick="jumptoTime()">Yeah,</a>
 <a id="151.67" onclick="jumptoTime()">we're</a>
 <a id="151.87" onclick="jumptoTime()">on</a>
 <a id="152.01" onclick="jumptoTime()">like</a>
@@ -375,10 +393,10 @@
 <a id="153.131" onclick="jumptoTime()">cadence.</a>
 <a id="154.052" onclick="jumptoTime()">Okay.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_03</span>
-          <br>
-      <a id="155.063" onclick="jumptoTime()">Yeah,</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_03</span>
+      <br>
+  <a id="155.063" onclick="jumptoTime()">Yeah,</a>
 <a id="155.583" onclick="jumptoTime()">GitOps</a>
 <a id="156.043" onclick="jumptoTime()">has</a>
 <a id="156.244" onclick="jumptoTime()">been</a>
@@ -387,10 +405,10 @@
 <a id="158.184" onclick="jumptoTime()">the</a>
 <a id="159.005" onclick="jumptoTime()">enablement.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_00</span>
-          <br>
-      <a id="162.446" onclick="jumptoTime()">Cool.</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_00</span>
+      <br>
+  <a id="162.446" onclick="jumptoTime()">Cool.</a>
 <a id="162.747" onclick="jumptoTime()">So</a>
 <a id="164.667" onclick="jumptoTime()">I'm</a>
 <a id="164.807" onclick="jumptoTime()">just</a>
@@ -422,15 +440,15 @@
 <a id="179.334" onclick="jumptoTime()">sound</a>
 <a id="179.614" onclick="jumptoTime()">right?</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_03</span>
-          <br>
-      <a id="180.155" onclick="jumptoTime()">Yeah.</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_03</span>
+      <br>
+  <a id="180.155" onclick="jumptoTime()">Yeah.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_07</span>
-          <br>
-      <a id="180.935" onclick="jumptoTime()">Yep.</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_07</span>
+      <br>
+  <a id="180.935" onclick="jumptoTime()">Yep.</a>
 <a id="181.615" onclick="jumptoTime()">That's</a>
 <a id="181.795" onclick="jumptoTime()">where</a>
 <a id="181.975" onclick="jumptoTime()">we</a>
@@ -439,10 +457,10 @@
 <a id="182.596" onclick="jumptoTime()">I</a>
 <a id="182.696" onclick="jumptoTime()">heard.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_00</span>
-          <br>
-      <a id="184.249" onclick="jumptoTime()">Cool,</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_00</span>
+      <br>
+  <a id="184.249" onclick="jumptoTime()">Cool,</a>
 <a id="184.929" onclick="jumptoTime()">so</a>
 <a id="185.089" onclick="jumptoTime()">then</a>
 <a id="185.63" onclick="jumptoTime()">I</a>
@@ -574,10 +592,10 @@
 <a id="239.908" onclick="jumptoTime()">it,</a>
 <a id="240.228" onclick="jumptoTime()">but.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_05</span>
-          <br>
-      <a id="242.486" onclick="jumptoTime()">I</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_05</span>
+      <br>
+  <a id="242.486" onclick="jumptoTime()">I</a>
 <a id="242.566" onclick="jumptoTime()">had</a>
 <a id="242.766" onclick="jumptoTime()">two</a>
 <a id="242.986" onclick="jumptoTime()">questions</a>
@@ -594,10 +612,10 @@
 <a id="247.59" onclick="jumptoTime()">looking</a>
 <a id="248.031" onclick="jumptoTime()">at?</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_00</span>
-          <br>
-      <a id="249.772" onclick="jumptoTime()">So,</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_00</span>
+      <br>
+  <a id="249.772" onclick="jumptoTime()">So,</a>
 <a id="250.072" onclick="jumptoTime()">uh,</a>
 <a id="252.054" onclick="jumptoTime()">so</a>
 <a id="252.314" onclick="jumptoTime()">in</a>
@@ -864,10 +882,10 @@
 <a id="348.106" onclick="jumptoTime()">think,</a>
 <a id="348.286" onclick="jumptoTime()">Cindy?</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_05</span>
-          <br>
-      <a id="350.37" onclick="jumptoTime()">Yeah,</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_05</span>
+      <br>
+  <a id="350.37" onclick="jumptoTime()">Yeah,</a>
 <a id="350.83" onclick="jumptoTime()">I</a>
 <a id="350.93" onclick="jumptoTime()">think</a>
 <a id="351.971" onclick="jumptoTime()">I</a>
@@ -950,10 +968,10 @@
 <a id="378.937" onclick="jumptoTime()">in</a>
 <a id="379.057" onclick="jumptoTime()">here?</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_00</span>
-          <br>
-      <a id="379.958" onclick="jumptoTime()">Absolutely.</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_00</span>
+      <br>
+  <a id="379.958" onclick="jumptoTime()">Absolutely.</a>
 <a id="380.739" onclick="jumptoTime()">Yeah.</a>
 <a id="381.86" onclick="jumptoTime()">Yeah.</a>
 <a id="382.1" onclick="jumptoTime()">And</a>
@@ -1031,10 +1049,10 @@
 <a id="402.057" onclick="jumptoTime()">out</a>
 <a id="402.257" onclick="jumptoTime()">with.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_05</span>
-          <br>
-      <a id="402.998" onclick="jumptoTime()">And</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_05</span>
+      <br>
+  <a id="402.998" onclick="jumptoTime()">And</a>
 <a id="403.118" onclick="jumptoTime()">are</a>
 <a id="403.218" onclick="jumptoTime()">we</a>
 <a id="403.338" onclick="jumptoTime()">trying</a>
@@ -1044,10 +1062,10 @@
 <a id="404.559" onclick="jumptoTime()">per</a>
 <a id="404.719" onclick="jumptoTime()">stage?</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_00</span>
-          <br>
-      <a id="406.54" onclick="jumptoTime()">Yeah,</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_00</span>
+      <br>
+  <a id="406.54" onclick="jumptoTime()">Yeah,</a>
 <a id="406.82" onclick="jumptoTime()">ideally</a>
 <a id="407.321" onclick="jumptoTime()">there's</a>
 <a id="407.581" onclick="jumptoTime()">just,</a>
@@ -1097,10 +1115,10 @@
 <a id="425.326" onclick="jumptoTime()">exciting</a>
 <a id="425.626" onclick="jumptoTime()">integrations.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_01</span>
-          <br>
-      <a id="426.186" onclick="jumptoTime()">So</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_01</span>
+      <br>
+  <a id="426.186" onclick="jumptoTime()">So</a>
 <a id="426.627" onclick="jumptoTime()">we</a>
 <a id="426.747" onclick="jumptoTime()">have...</a>
 <a id="427.447" onclick="jumptoTime()">The</a>
@@ -1443,17 +1461,17 @@
 <a id="540.03" onclick="jumptoTime()">about</a>
 <a id="540.27" onclick="jumptoTime()">that.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_06</span>
-          <br>
-      <a id="545.052" onclick="jumptoTime()">I</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_06</span>
+      <br>
+  <a id="545.052" onclick="jumptoTime()">I</a>
 <a id="545.453" onclick="jumptoTime()">like</a>
 <a id="545.653" onclick="jumptoTime()">that.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_03</span>
-          <br>
-      <a id="546.673" onclick="jumptoTime()">Go</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_03</span>
+      <br>
+  <a id="546.673" onclick="jumptoTime()">Go</a>
 <a id="546.973" onclick="jumptoTime()">ahead.</a>
 <a id="547.253" onclick="jumptoTime()">No,</a>
 <a id="547.634" onclick="jumptoTime()">no,</a>
@@ -1508,10 +1526,10 @@
 <a id="570.051" onclick="jumptoTime()">makes</a>
 <a id="570.251" onclick="jumptoTime()">sense.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_06</span>
-          <br>
-      <a id="571.129" onclick="jumptoTime()">Yeah,</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_06</span>
+      <br>
+  <a id="571.129" onclick="jumptoTime()">Yeah,</a>
 <a id="571.57" onclick="jumptoTime()">and</a>
 <a id="571.77" onclick="jumptoTime()">that</a>
 <a id="572.01" onclick="jumptoTime()">would</a>
@@ -1651,10 +1669,10 @@
 <a id="615.408" onclick="jumptoTime()">of</a>
 <a id="615.468" onclick="jumptoTime()">cool.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_00</span>
-          <br>
-      <a id="618.095" onclick="jumptoTime()">Is</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_00</span>
+      <br>
+  <a id="618.095" onclick="jumptoTime()">Is</a>
 <a id="618.215" onclick="jumptoTime()">that,</a>
 <a id="620.197" onclick="jumptoTime()">do</a>
 <a id="620.317" onclick="jumptoTime()">we</a>
@@ -1665,10 +1683,10 @@
 <a id="621.598" onclick="jumptoTime()">on</a>
 <a id="621.738" onclick="jumptoTime()">here?</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_01</span>
-          <br>
-      <a id="624.08" onclick="jumptoTime()">I</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_01</span>
+      <br>
+  <a id="624.08" onclick="jumptoTime()">I</a>
 <a id="624.28" onclick="jumptoTime()">didn't</a>
 <a id="624.6" onclick="jumptoTime()">add</a>
 <a id="624.74" onclick="jumptoTime()">it,</a>
@@ -1714,10 +1732,10 @@
 <a id="634.808" onclick="jumptoTime()">than</a>
 <a id="634.968" onclick="jumptoTime()">that.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_00</span>
-          <br>
-      <a id="638.391" onclick="jumptoTime()">And</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_00</span>
+      <br>
+  <a id="638.391" onclick="jumptoTime()">And</a>
 <a id="638.471" onclick="jumptoTime()">that...</a>
 <a id="639.818" onclick="jumptoTime()">I</a>
 <a id="639.918" onclick="jumptoTime()">think</a>
@@ -1787,10 +1805,10 @@
 <a id="661.304" onclick="jumptoTime()">one</a>
 <a id="661.424" onclick="jumptoTime()">too.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_03</span>
-          <br>
-      <a id="662.425" onclick="jumptoTime()">How</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_03</span>
+      <br>
+  <a id="662.425" onclick="jumptoTime()">How</a>
 <a id="662.605" onclick="jumptoTime()">are</a>
 <a id="662.725" onclick="jumptoTime()">we</a>
 <a id="662.885" onclick="jumptoTime()">measuring</a>
@@ -1871,10 +1889,10 @@
 <a id="695.914" onclick="jumptoTime()">or</a>
 <a id="696.074" onclick="jumptoTime()">three.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_00</span>
-          <br>
-      <a id="698.391" onclick="jumptoTime()">I</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_00</span>
+      <br>
+  <a id="698.391" onclick="jumptoTime()">I</a>
 <a id="698.491" onclick="jumptoTime()">think</a>
 <a id="699.231" onclick="jumptoTime()">it's</a>
 <a id="699.371" onclick="jumptoTime()">a</a>
@@ -2035,10 +2053,10 @@
 <a id="757.498" onclick="jumptoTime()">it's</a>
 <a id="757.638" onclick="jumptoTime()">OK.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_05</span>
-          <br>
-      <a id="760.399" onclick="jumptoTime()">Harsh</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_05</span>
+      <br>
+  <a id="760.399" onclick="jumptoTime()">Harsh</a>
 <a id="760.7" onclick="jumptoTime()">responded</a>
 <a id="761.26" onclick="jumptoTime()">to</a>
 <a id="761.38" onclick="jumptoTime()">my</a>
@@ -2063,10 +2081,10 @@
 <a id="768.044" onclick="jumptoTime()">stack</a>
 <a id="768.424" onclick="jumptoTime()">ranked.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_00</span>
-          <br>
-      <a id="770.525" onclick="jumptoTime()">Yeah,</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_00</span>
+      <br>
+  <a id="770.525" onclick="jumptoTime()">Yeah,</a>
 <a id="771.226" onclick="jumptoTime()">I</a>
 <a id="771.366" onclick="jumptoTime()">might.</a>
 <a id="774.457" onclick="jumptoTime()">I</a>
@@ -2189,10 +2207,10 @@
 <a id="817.826" onclick="jumptoTime()">doesn't</a>
 <a id="818.126" onclick="jumptoTime()">necessarily.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_05</span>
-          <br>
-      <a id="820.966" onclick="jumptoTime()">Somebody's</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_05</span>
+      <br>
+  <a id="820.966" onclick="jumptoTime()">Somebody's</a>
 <a id="821.867" onclick="jumptoTime()">one</a>
 <a id="822.327" onclick="jumptoTime()">or</a>
 <a id="822.467" onclick="jumptoTime()">somebody's</a>
@@ -2209,10 +2227,10 @@
 <a id="827.168" onclick="jumptoTime()">on</a>
 <a id="827.268" onclick="jumptoTime()">the.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_01</span>
-          <br>
-      <a id="828.12" onclick="jumptoTime()">And</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_01</span>
+      <br>
+  <a id="828.12" onclick="jumptoTime()">And</a>
 <a id="828.26" onclick="jumptoTime()">I</a>
 <a id="828.34" onclick="jumptoTime()">had,</a>
 <a id="828.68" onclick="jumptoTime()">um,</a>
@@ -2269,10 +2287,10 @@
 <a id="843.429" onclick="jumptoTime()">of</a>
 <a id="843.509" onclick="jumptoTime()">three.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_00</span>
-          <br>
-      <a id="843.769" onclick="jumptoTime()">Yeah.</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_00</span>
+      <br>
+  <a id="843.769" onclick="jumptoTime()">Yeah.</a>
 <a id="844.95" onclick="jumptoTime()">Give</a>
 <a id="845.13" onclick="jumptoTime()">it,</a>
 <a id="846.01" onclick="jumptoTime()">give</a>
@@ -2369,10 +2387,10 @@
 <a id="878.934" onclick="jumptoTime()">five</a>
 <a id="879.454" onclick="jumptoTime()">overall.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_01</span>
-          <br>
-      <a id="879.914" onclick="jumptoTime()">So</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_01</span>
+      <br>
+  <a id="879.914" onclick="jumptoTime()">So</a>
 <a id="881.776" onclick="jumptoTime()">this</a>
 <a id="882.016" onclick="jumptoTime()">one</a>
 <a id="882.156" onclick="jumptoTime()">is</a>
@@ -2400,10 +2418,10 @@
 <a id="889.5" onclick="jumptoTime()">with</a>
 <a id="889.68" onclick="jumptoTime()">that?</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_00</span>
-          <br>
-      <a id="890.641" onclick="jumptoTime()">So</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_00</span>
+      <br>
+  <a id="890.641" onclick="jumptoTime()">So</a>
 <a id="890.801" onclick="jumptoTime()">this</a>
 <a id="891.001" onclick="jumptoTime()">is</a>
 <a id="891.141" onclick="jumptoTime()">exactly</a>
@@ -2538,10 +2556,10 @@
 <a id="943.516" onclick="jumptoTime()">You</a>
 <a id="943.636" onclick="jumptoTime()">know,</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_06</span>
-          <br>
-      <a id="949.329" onclick="jumptoTime()">We</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_06</span>
+      <br>
+  <a id="949.329" onclick="jumptoTime()">We</a>
 <a id="949.409" onclick="jumptoTime()">should</a>
 <a id="949.629" onclick="jumptoTime()">reserve</a>
 <a id="950.009" onclick="jumptoTime()">a</a>
@@ -2579,10 +2597,10 @@
 <a id="958.174" onclick="jumptoTime()">re-bucket</a>
 <a id="958.695" onclick="jumptoTime()">that.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_00</span>
-          <br>
-      <a id="961.676" onclick="jumptoTime()">So</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_00</span>
+      <br>
+  <a id="961.676" onclick="jumptoTime()">So</a>
 <a id="966.899" onclick="jumptoTime()">maybe</a>
 <a id="967.139" onclick="jumptoTime()">we</a>
 <a id="967.26" onclick="jumptoTime()">can</a>
@@ -2625,10 +2643,10 @@
 <a id="983.582" onclick="jumptoTime()">or</a>
 <a id="1" onclick="jumptoTime()">30?</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_01</span>
-          <br>
-      <a id="983.763" onclick="jumptoTime()">I</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_01</span>
+      <br>
+  <a id="983.763" onclick="jumptoTime()">I</a>
 <a id="987.105" onclick="jumptoTime()">would</a>
 <a id="987.325" onclick="jumptoTime()">say</a>
 <a id="987.705" onclick="jumptoTime()">if</a>
@@ -2663,21 +2681,21 @@
 <a id="996.752" onclick="jumptoTime()">UX</a>
 <a id="997.052" onclick="jumptoTime()">improvement.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_08</span>
-          <br>
-      <a id="998.153" onclick="jumptoTime()">Okay.</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_08</span>
+      <br>
+  <a id="998.153" onclick="jumptoTime()">Okay.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_00</span>
-          <br>
-      <a id="1006.909" onclick="jumptoTime()">What</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_00</span>
+      <br>
+  <a id="1006.909" onclick="jumptoTime()">What</a>
 <a id="1007.129" onclick="jumptoTime()">else?</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_05</span>
-          <br>
-      <a id="1008.409" onclick="jumptoTime()">We</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_05</span>
+      <br>
+  <a id="1008.409" onclick="jumptoTime()">We</a>
 <a id="1008.529" onclick="jumptoTime()">need</a>
 <a id="1008.689" onclick="jumptoTime()">to</a>
 <a id="1008.769" onclick="jumptoTime()">have</a>
@@ -2731,10 +2749,10 @@
 <a id="1033.655" onclick="jumptoTime()">before.</a>
 <a id="1034.115" onclick="jumptoTime()">Yeah.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_00</span>
-          <br>
-      <a id="1037.754" onclick="jumptoTime()">I</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_00</span>
+      <br>
+  <a id="1037.754" onclick="jumptoTime()">I</a>
 <a id="1038.114" onclick="jumptoTime()">let's,</a>
 <a id="1038.455" onclick="jumptoTime()">let's</a>
 <a id="1038.635" onclick="jumptoTime()">go</a>
@@ -2780,10 +2798,10 @@
 <a id="1051.163" onclick="jumptoTime()">get</a>
 <a id="1051.543" onclick="jumptoTime()">old.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_05</span>
-          <br>
-      <a id="1052.203" onclick="jumptoTime()">I</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_05</span>
+      <br>
+  <a id="1052.203" onclick="jumptoTime()">I</a>
 <a id="1054.044" onclick="jumptoTime()">was,</a>
 <a id="1054.805" onclick="jumptoTime()">I</a>
 <a id="1054.885" onclick="jumptoTime()">mean,</a>
@@ -2797,10 +2815,10 @@
 <a id="1057.827" onclick="jumptoTime()">time</a>
 <a id="1058.127" onclick="jumptoTime()">ago.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_00</span>
-          <br>
-      <a id="1060.288" onclick="jumptoTime()">Was</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_00</span>
+      <br>
+  <a id="1060.288" onclick="jumptoTime()">Was</a>
 <a id="1060.449" onclick="jumptoTime()">it</a>
 <a id="1060.529" onclick="jumptoTime()">within</a>
 <a id="1060.749" onclick="jumptoTime()">the</a>
@@ -2817,10 +2835,10 @@
 <a id="1065.889" onclick="jumptoTime()">past</a>
 <a id="1066.169" onclick="jumptoTime()">year.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_03</span>
-          <br>
-      <a id="1066.69" onclick="jumptoTime()">I</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_03</span>
+      <br>
+  <a id="1066.69" onclick="jumptoTime()">I</a>
 <a id="1066.81" onclick="jumptoTime()">think</a>
 <a id="1067.05" onclick="jumptoTime()">it</a>
 <a id="1067.15" onclick="jumptoTime()">was</a>
@@ -2834,19 +2852,19 @@
 <a id="1069.973" onclick="jumptoTime()">or</a>
 <a id="1070.093" onclick="jumptoTime()">so.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_07</span>
-          <br>
-      <a id="1071.034" onclick="jumptoTime()">It</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_07</span>
+      <br>
+  <a id="1071.034" onclick="jumptoTime()">It</a>
 <a id="1071.134" onclick="jumptoTime()">was</a>
 <a id="1071.254" onclick="jumptoTime()">last</a>
 <a id="1071.534" onclick="jumptoTime()">summer,</a>
 <a id="1072.355" onclick="jumptoTime()">right?</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_05</span>
-          <br>
-      <a id="1073.336" onclick="jumptoTime()">It</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_05</span>
+      <br>
+  <a id="1073.336" onclick="jumptoTime()">It</a>
 <a id="1073.416" onclick="jumptoTime()">was</a>
 <a id="1073.556" onclick="jumptoTime()">like</a>
 <a id="1073.836" onclick="jumptoTime()">last</a>
@@ -2906,10 +2924,10 @@
 <a id="1091.714" onclick="jumptoTime()">out</a>
 <a id="1091.915" onclick="jumptoTime()">now.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_00</span>
-          <br>
-      <a id="1093.316" onclick="jumptoTime()">Right.</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_00</span>
+      <br>
+  <a id="1093.316" onclick="jumptoTime()">Right.</a>
 <a id="1093.516" onclick="jumptoTime()">That's</a>
 <a id="1093.696" onclick="jumptoTime()">what</a>
 <a id="1093.836" onclick="jumptoTime()">I</a>
@@ -2947,10 +2965,10 @@
 <a id="1103.365" onclick="jumptoTime()">the</a>
 <a id="1103.525" onclick="jumptoTime()">position.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_05</span>
-          <br>
-      <a id="1105.047" onclick="jumptoTime()">In</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_05</span>
+      <br>
+  <a id="1105.047" onclick="jumptoTime()">In</a>
 <a id="1105.167" onclick="jumptoTime()">terms</a>
 <a id="1105.447" onclick="jumptoTime()">of</a>
 <a id="1105.547" onclick="jumptoTime()">proprietary</a>
@@ -3017,15 +3035,15 @@
 <a id="1135.531" onclick="jumptoTime()">probably.</a>
 <a id="1136.031" onclick="jumptoTime()">Okay.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_01</span>
-          <br>
-      <a id="1137.072" onclick="jumptoTime()">Yeah.</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_01</span>
+      <br>
+  <a id="1137.072" onclick="jumptoTime()">Yeah.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_00</span>
-          <br>
-      <a id="1137.892" onclick="jumptoTime()">HAB-Jacques</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_00</span>
+      <br>
+  <a id="1137.892" onclick="jumptoTime()">HAB-Jacques</a>
 <a id="1138.192" onclick="jumptoTime()">Juilland,</a>
 <a id="1138.392" onclick="jumptoTime()">SEM</a>
 <a id="1138.472" onclick="jumptoTime()">grep</a>
@@ -3078,15 +3096,15 @@
 <a id="1158.018" onclick="jumptoTime()">vulnerability</a>
 <a id="1158.298" onclick="jumptoTime()">management.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_05</span>
-          <br>
-      <a id="1159.458" onclick="jumptoTime()">Okay.</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_05</span>
+      <br>
+  <a id="1159.458" onclick="jumptoTime()">Okay.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_00</span>
-          <br>
-      <a id="1162.034" onclick="jumptoTime()">I'm</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_00</span>
+      <br>
+  <a id="1162.034" onclick="jumptoTime()">I'm</a>
 <a id="1162.194" onclick="jumptoTime()">just</a>
 <a id="1162.354" onclick="jumptoTime()">kind</a>
 <a id="1162.574" onclick="jumptoTime()">of</a>
@@ -3111,10 +3129,10 @@
 <a id="1169.317" onclick="jumptoTime()">investment</a>
 <a id="1169.817" onclick="jumptoTime()">in.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_03</span>
-          <br>
-      <a id="1169.917" onclick="jumptoTime()">Although</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_03</span>
+      <br>
+  <a id="1169.917" onclick="jumptoTime()">Although</a>
 <a id="1176.92" onclick="jumptoTime()">I</a>
 <a id="1177.02" onclick="jumptoTime()">think</a>
 <a id="1177.24" onclick="jumptoTime()">the</a>
@@ -3144,10 +3162,10 @@
 <a id="1189.945" onclick="jumptoTime()">that</a>
 <a id="1190.205" onclick="jumptoTime()">already.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_00</span>
-          <br>
-      <a id="1191.449" onclick="jumptoTime()">So</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_00</span>
+      <br>
+  <a id="1191.449" onclick="jumptoTime()">So</a>
 <a id="1192.449" onclick="jumptoTime()">I'm</a>
 <a id="1192.529" onclick="jumptoTime()">going</a>
 <a id="1192.93" onclick="jumptoTime()">to,</a>
@@ -3233,10 +3251,10 @@
 <a id="1238.319" onclick="jumptoTime()">from</a>
 <a id="1238.499" onclick="jumptoTime()">CICD.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_07</span>
-          <br>
-      <a id="1241.102" onclick="jumptoTime()">Plan</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_07</span>
+      <br>
+  <a id="1241.102" onclick="jumptoTime()">Plan</a>
 <a id="1241.342" onclick="jumptoTime()">editor</a>
 <a id="1241.582" onclick="jumptoTime()">is</a>
 <a id="1241.662" onclick="jumptoTime()">definitely</a>
@@ -3245,10 +3263,10 @@
 <a id="1242.443" onclick="jumptoTime()">for</a>
 <a id="1242.603" onclick="jumptoTime()">CICD.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_06</span>
-          <br>
-      <a id="1246.131" onclick="jumptoTime()">Yeah,</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_06</span>
+      <br>
+  <a id="1246.131" onclick="jumptoTime()">Yeah,</a>
 <a id="1249.532" onclick="jumptoTime()">there</a>
 <a id="1249.693" onclick="jumptoTime()">might</a>
 <a id="1249.833" onclick="jumptoTime()">be</a>
@@ -3281,10 +3299,10 @@
 <a id="1262.698" onclick="jumptoTime()">might</a>
 <a id="1262.858" onclick="jumptoTime()">be.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_00</span>
-          <br>
-      <a id="1266.279" onclick="jumptoTime()">Cool.</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_00</span>
+      <br>
+  <a id="1266.279" onclick="jumptoTime()">Cool.</a>
 <a id="1266.619" onclick="jumptoTime()">I'm</a>
 <a id="1266.879" onclick="jumptoTime()">going</a>
 <a id="1267.359" onclick="jumptoTime()">to</a>
@@ -3303,10 +3321,10 @@
 <a id="1280.263" onclick="jumptoTime()">I</a>
 <a id="1280.383" onclick="jumptoTime()">think.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_07</span>
-          <br>
-      <a id="1282.665" onclick="jumptoTime()">That's</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_07</span>
+      <br>
+  <a id="1282.665" onclick="jumptoTime()">That's</a>
 <a id="1282.905" onclick="jumptoTime()">a</a>
 <a id="1283.005" onclick="jumptoTime()">pretty</a>
 <a id="1283.265" onclick="jumptoTime()">heavy,</a>
@@ -3324,10 +3342,10 @@
 <a id="1286.568" onclick="jumptoTime()">cool.</a>
 <a id="1287.509" onclick="jumptoTime()">Yeah.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_00</span>
-          <br>
-      <a id="1290.131" onclick="jumptoTime()">And</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_00</span>
+      <br>
+  <a id="1290.131" onclick="jumptoTime()">And</a>
 <a id="1290.271" onclick="jumptoTime()">this</a>
 <a id="1290.451" onclick="jumptoTime()">is</a>
 <a id="1290.551" onclick="jumptoTime()">something</a>
@@ -3459,10 +3477,10 @@
 <a id="1336.493" onclick="jumptoTime()">that</a>
 <a id="1336.873" onclick="jumptoTime()">too.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_07</span>
-          <br>
-      <a id="1338.134" onclick="jumptoTime()">Put</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_07</span>
+      <br>
+  <a id="1338.134" onclick="jumptoTime()">Put</a>
 <a id="1338.334" onclick="jumptoTime()">everyone</a>
 <a id="1338.675" onclick="jumptoTime()">in</a>
 <a id="1338.775" onclick="jumptoTime()">the</a>
@@ -3514,10 +3532,10 @@
 <a id="1351.167" onclick="jumptoTime()">be</a>
 <a id="1351.287" onclick="jumptoTime()">great.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_00</span>
-          <br>
-      <a id="1352.148" onclick="jumptoTime()">Aside</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_00</span>
+      <br>
+  <a id="1352.148" onclick="jumptoTime()">Aside</a>
 <a id="1352.949" onclick="jumptoTime()">from</a>
 <a id="1353.069" onclick="jumptoTime()">the</a>
 <a id="1353.169" onclick="jumptoTime()">goofy</a>
@@ -3609,10 +3627,10 @@
 <a id="1379.927" onclick="jumptoTime()">Alita?</a>
 <a id="1380.268" onclick="jumptoTime()">Yes.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_03</span>
-          <br>
-      <a id="1383.123" onclick="jumptoTime()">So</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_03</span>
+      <br>
+  <a id="1383.123" onclick="jumptoTime()">So</a>
 <a id="1384.484" onclick="jumptoTime()">in</a>
 <a id="1384.584" onclick="jumptoTime()">the</a>
 <a id="1384.704" onclick="jumptoTime()">competitive</a>
@@ -3771,10 +3789,10 @@
 <a id="1448.504" onclick="jumptoTime()">with</a>
 <a id="1448.704" onclick="jumptoTime()">you.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_04</span>
-          <br>
-      <a id="1449.405" onclick="jumptoTime()">Yeah,</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_04</span>
+      <br>
+  <a id="1449.405" onclick="jumptoTime()">Yeah,</a>
 <a id="1449.625" onclick="jumptoTime()">that's</a>
 <a id="1449.865" onclick="jumptoTime()">the</a>
 <a id="1449.965" onclick="jumptoTime()">case.</a>
@@ -3828,10 +3846,10 @@
 <a id="1463.656" onclick="jumptoTime()">don't</a>
 <a id="1463.836" onclick="jumptoTime()">apply?</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_07</span>
-          <br>
-      <a id="1464.176" onclick="jumptoTime()">Yeah.</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_07</span>
+      <br>
+  <a id="1464.176" onclick="jumptoTime()">Yeah.</a>
 <a id="1465.438" onclick="jumptoTime()">I</a>
 <a id="1465.798" onclick="jumptoTime()">think</a>
 <a id="1465.998" onclick="jumptoTime()">it</a>
@@ -3843,10 +3861,10 @@
 <a id="1467.9" onclick="jumptoTime()">the</a>
 <a id="1468.06" onclick="jumptoTime()">same.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_03</span>
-          <br>
-      <a id="1468.26" onclick="jumptoTime()">Yeah,</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_03</span>
+      <br>
+  <a id="1468.26" onclick="jumptoTime()">Yeah,</a>
 <a id="1468.44" onclick="jumptoTime()">so</a>
 <a id="1468.7" onclick="jumptoTime()">each</a>
 <a id="1468.941" onclick="jumptoTime()">sheet</a>
@@ -3902,10 +3920,10 @@
 <a id="1489.087" onclick="jumptoTime()">every</a>
 <a id="1489.387" onclick="jumptoTime()">stage.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_04</span>
-          <br>
-      <a id="1490.207" onclick="jumptoTime()">Yeah,</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_04</span>
+      <br>
+  <a id="1490.207" onclick="jumptoTime()">Yeah,</a>
 <a id="1491.248" onclick="jumptoTime()">that's</a>
 <a id="1491.448" onclick="jumptoTime()">when</a>
 <a id="1491.649" onclick="jumptoTime()">we</a>
@@ -3971,10 +3989,10 @@
 <a id="1506.32" onclick="jumptoTime()">Make</a>
 <a id="1506.48" onclick="jumptoTime()">sense?</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_07</span>
-          <br>
-      <a id="1507.574" onclick="jumptoTime()">So</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_07</span>
+      <br>
+  <a id="1507.574" onclick="jumptoTime()">So</a>
 <a id="1507.734" onclick="jumptoTime()">just</a>
 <a id="1507.934" onclick="jumptoTime()">pick</a>
 <a id="1508.114" onclick="jumptoTime()">the</a>
@@ -3989,10 +4007,10 @@
 <a id="1509.835" onclick="jumptoTime()">our</a>
 <a id="1509.995" onclick="jumptoTime()">stage.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_03</span>
-          <br>
-      <a id="1511.075" onclick="jumptoTime()">Right.</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_03</span>
+      <br>
+  <a id="1511.075" onclick="jumptoTime()">Right.</a>
 <a id="1512.756" onclick="jumptoTime()">We</a>
 <a id="1512.936" onclick="jumptoTime()">just</a>
 <a id="1513.476" onclick="jumptoTime()">use</a>
@@ -4034,19 +4052,19 @@
 <a id="1523.3" onclick="jumptoTime()">tier</a>
 <a id="1523.601" onclick="jumptoTime()">three.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_04</span>
-          <br>
-      <a id="1524.401" onclick="jumptoTime()">Then</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_04</span>
+      <br>
+  <a id="1524.401" onclick="jumptoTime()">Then</a>
 <a id="1524.641" onclick="jumptoTime()">we'll</a>
 <a id="1524.841" onclick="jumptoTime()">look</a>
 <a id="1525.021" onclick="jumptoTime()">at</a>
 <a id="1525.121" onclick="jumptoTime()">those.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_03</span>
-          <br>
-      <a id="1525.661" onclick="jumptoTime()">Do</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_03</span>
+      <br>
+  <a id="1525.661" onclick="jumptoTime()">Do</a>
 <a id="1525.862" onclick="jumptoTime()">we</a>
 <a id="1526.282" onclick="jumptoTime()">need</a>
 <a id="1527.042" onclick="jumptoTime()">to</a>
@@ -4067,10 +4085,10 @@
 <a id="1532.124" onclick="jumptoTime()">over</a>
 <a id="1532.364" onclick="jumptoTime()">here.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_04</span>
-          <br>
-      <a id="1533.365" onclick="jumptoTime()">Yeah,</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_04</span>
+      <br>
+  <a id="1533.365" onclick="jumptoTime()">Yeah,</a>
 <a id="1534.025" onclick="jumptoTime()">we</a>
 <a id="1534.385" onclick="jumptoTime()">should</a>
 <a id="1535.185" onclick="jumptoTime()">add</a>
@@ -4088,10 +4106,10 @@
 <a id="1539.395" onclick="jumptoTime()">asked</a>
 <a id="1539.575" onclick="jumptoTime()">me.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_05</span>
-          <br>
-      <a id="1540.116" onclick="jumptoTime()">I'm</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_05</span>
+      <br>
+  <a id="1540.116" onclick="jumptoTime()">I'm</a>
 <a id="1540.276" onclick="jumptoTime()">just</a>
 <a id="1540.496" onclick="jumptoTime()">looking</a>
 <a id="1540.856" onclick="jumptoTime()">at</a>
@@ -4114,10 +4132,10 @@
 <a id="1549.844" onclick="jumptoTime()">better</a>
 <a id="1550.325" onclick="jumptoTime()">at.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_04</span>
-          <br>
-      <a id="1550.965" onclick="jumptoTime()">Yeah,</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_04</span>
+      <br>
+  <a id="1550.965" onclick="jumptoTime()">Yeah,</a>
 <a id="1551.606" onclick="jumptoTime()">for</a>
 <a id="1551.806" onclick="jumptoTime()">sure.</a>
 <a id="1552.206" onclick="jumptoTime()">For</a>
@@ -4125,10 +4143,10 @@
 <a id="1553.267" onclick="jumptoTime()">Yeah.</a>
 <a id="1553.708" onclick="jumptoTime()">Right.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_00</span>
-          <br>
-      <a id="1554.028" onclick="jumptoTime()">So</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_00</span>
+      <br>
+  <a id="1554.028" onclick="jumptoTime()">So</a>
 <a id="1555.89" onclick="jumptoTime()">ideally</a>
 <a id="1556.31" onclick="jumptoTime()">when</a>
 <a id="1556.47" onclick="jumptoTime()">we</a>
@@ -4156,10 +4174,10 @@
 <a id="1563.736" onclick="jumptoTime()">didn't</a>
 <a id="1563.997" onclick="jumptoTime()">have.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_07</span>
-          <br>
-      <a id="1565.987" onclick="jumptoTime()">Well,</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_07</span>
+      <br>
+  <a id="1565.987" onclick="jumptoTime()">Well,</a>
 <a id="1566.107" onclick="jumptoTime()">I</a>
 <a id="1566.187" onclick="jumptoTime()">thought</a>
 <a id="1566.367" onclick="jumptoTime()">it</a>
@@ -4187,10 +4205,10 @@
 <a id="1570.548" onclick="jumptoTime()">Yeah,</a>
 <a id="1571.369" onclick="jumptoTime()">yeah.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_00</span>
-          <br>
-      <a id="1571.929" onclick="jumptoTime()">Exactly,</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_00</span>
+      <br>
+  <a id="1571.929" onclick="jumptoTime()">Exactly,</a>
 <a id="1572.429" onclick="jumptoTime()">yeah.</a>
 <a id="1572.529" onclick="jumptoTime()">It</a>
 <a id="1572.649" onclick="jumptoTime()">should</a>
@@ -4361,10 +4379,10 @@
 <a id="1638.693" onclick="jumptoTime()">out</a>
 <a id="1638.813" onclick="jumptoTime()">there.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_04</span>
-          <br>
-      <a id="1639.634" onclick="jumptoTime()">As</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_04</span>
+      <br>
+  <a id="1639.634" onclick="jumptoTime()">As</a>
 <a id="1639.974" onclick="jumptoTime()">a</a>
 <a id="1640.014" onclick="jumptoTime()">matter</a>
 <a id="1640.174" onclick="jumptoTime()">of</a>
@@ -4477,10 +4495,10 @@
 <a id="1670.963" onclick="jumptoTime()">of</a>
 <a id="0" onclick="jumptoTime()">15</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_00</span>
-          <br>
-      <a id="1672.279" onclick="jumptoTime()">we</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_00</span>
+      <br>
+  <a id="1672.279" onclick="jumptoTime()">we</a>
 <a id="1672.459" onclick="jumptoTime()">should</a>
 <a id="1672.639" onclick="jumptoTime()">call</a>
 <a id="1672.84" onclick="jumptoTime()">that</a>
@@ -4500,10 +4518,10 @@
 <a id="1677.043" onclick="jumptoTime()">of</a>
 <a id="1677.103" onclick="jumptoTime()">capabilities.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_07</span>
-          <br>
-      <a id="1680.426" onclick="jumptoTime()">It'd</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_07</span>
+      <br>
+  <a id="1680.426" onclick="jumptoTime()">It'd</a>
 <a id="1680.566" onclick="jumptoTime()">be,</a>
 <a id="1680.766" onclick="jumptoTime()">it'd</a>
 <a id="1680.946" onclick="jumptoTime()">be,</a>
@@ -4560,10 +4578,10 @@
 <a id="1693.336" onclick="jumptoTime()">for</a>
 <a id="1693.477" onclick="jumptoTime()">us.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_04</span>
-          <br>
-      <a id="1694.397" onclick="jumptoTime()">Have</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_04</span>
+      <br>
+  <a id="1694.397" onclick="jumptoTime()">Have</a>
 <a id="1694.577" onclick="jumptoTime()">you</a>
 <a id="1694.658" onclick="jumptoTime()">guys</a>
 <a id="1694.778" onclick="jumptoTime()">seen</a>
@@ -4579,28 +4597,28 @@
 <a id="1698.02" onclick="jumptoTime()">up</a>
 <a id="1698.12" onclick="jumptoTime()">with?</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_07</span>
-          <br>
-      <a id="1698.481" onclick="jumptoTime()">Not</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_07</span>
+      <br>
+  <a id="1698.481" onclick="jumptoTime()">Not</a>
 <a id="1698.681" onclick="jumptoTime()">yet.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_04</span>
-          <br>
-      <a id="1699.942" onclick="jumptoTime()">Oh,</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_04</span>
+      <br>
+  <a id="1699.942" onclick="jumptoTime()">Oh,</a>
 <a id="1700.102" onclick="jumptoTime()">you</a>
 <a id="1700.242" onclick="jumptoTime()">haven't?</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_07</span>
-          <br>
-      <a id="1701.083" onclick="jumptoTime()">No.</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_07</span>
+      <br>
+  <a id="1701.083" onclick="jumptoTime()">No.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_04</span>
-          <br>
-      <a id="1702.324" onclick="jumptoTime()">We</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_04</span>
+      <br>
+  <a id="1702.324" onclick="jumptoTime()">We</a>
 <a id="1702.444" onclick="jumptoTime()">have</a>
 <a id="1702.624" onclick="jumptoTime()">a</a>
 <a id="1702.704" onclick="jumptoTime()">link</a>
@@ -4609,10 +4627,10 @@
 <a id="1703.826" onclick="jumptoTime()">quickly,</a>
 <a id="1704.326" onclick="jumptoTime()">William.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_07</span>
-          <br>
-      <a id="1704.767" onclick="jumptoTime()">I</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_07</span>
+      <br>
+  <a id="1704.767" onclick="jumptoTime()">I</a>
 <a id="1705.547" onclick="jumptoTime()">don't</a>
 <a id="1705.868" onclick="jumptoTime()">know.</a>
 <a id="1706.148" onclick="jumptoTime()">Or</a>
@@ -4628,10 +4646,10 @@
 <a id="1708.691" onclick="jumptoTime()">find</a>
 <a id="1708.911" onclick="jumptoTime()">it.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_00</span>
-          <br>
-      <a id="1711.594" onclick="jumptoTime()">Let's</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_00</span>
+      <br>
+  <a id="1711.594" onclick="jumptoTime()">Let's</a>
 <a id="1711.774" onclick="jumptoTime()">see</a>
 <a id="1711.914" onclick="jumptoTime()">who</a>
 <a id="1712.054" onclick="jumptoTime()">can</a>
@@ -4639,10 +4657,10 @@
 <a id="1712.514" onclick="jumptoTime()">it</a>
 <a id="1712.595" onclick="jumptoTime()">faster.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_07</span>
-          <br>
-      <a id="1713.055" onclick="jumptoTime()">I</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_07</span>
+      <br>
+  <a id="1713.055" onclick="jumptoTime()">I</a>
 <a id="1713.095" onclick="jumptoTime()">can</a>
 <a id="1714.757" onclick="jumptoTime()">guarantee</a>
 <a id="1715.177" onclick="jumptoTime()">you</a>
@@ -4656,17 +4674,17 @@
 <a id="1716.599" onclick="jumptoTime()">have</a>
 <a id="1716.799" onclick="jumptoTime()">open.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_00</span>
-          <br>
-      <a id="1717.039" onclick="jumptoTime()">Oh,</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_00</span>
+      <br>
+  <a id="1717.039" onclick="jumptoTime()">Oh,</a>
 <a id="1718.14" onclick="jumptoTime()">my</a>
 <a id="1718.26" onclick="jumptoTime()">God.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_04</span>
-          <br>
-      <a id="1718.641" onclick="jumptoTime()">That's</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_04</span>
+      <br>
+  <a id="1718.641" onclick="jumptoTime()">That's</a>
 <a id="1718.841" onclick="jumptoTime()">why</a>
 <a id="1718.921" onclick="jumptoTime()">I'm</a>
 <a id="1719.101" onclick="jumptoTime()">like,</a>
@@ -4676,10 +4694,10 @@
 <a id="1720.262" onclick="jumptoTime()">be</a>
 <a id="1720.503" onclick="jumptoTime()">me.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_00</span>
-          <br>
-      <a id="1721.864" onclick="jumptoTime()">So</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_00</span>
+      <br>
+  <a id="1721.864" onclick="jumptoTime()">So</a>
 <a id="1723.025" onclick="jumptoTime()">this</a>
 <a id="1723.225" onclick="jumptoTime()">is</a>
 <a id="1723.426" onclick="jumptoTime()">why</a>
@@ -4732,10 +4750,10 @@
 <a id="1740.769" onclick="jumptoTime()">at</a>
 <a id="1740.909" onclick="jumptoTime()">first</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_04</span>
-          <br>
-      <a id="1743.348" onclick="jumptoTime()">I</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_04</span>
+      <br>
+  <a id="1743.348" onclick="jumptoTime()">I</a>
 <a id="1743.488" onclick="jumptoTime()">found</a>
 <a id="1743.828" onclick="jumptoTime()">it,</a>
 <a id="1744.048" onclick="jumptoTime()">I</a>
@@ -4792,10 +4810,10 @@
 <a id="1759.815" onclick="jumptoTime()">platform</a>
 <a id="1760.496" onclick="jumptoTime()">players.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_00</span>
-          <br>
-      <a id="1764.598" onclick="jumptoTime()">So</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_00</span>
+      <br>
+  <a id="1764.598" onclick="jumptoTime()">So</a>
 <a id="1764.738" onclick="jumptoTime()">we</a>
 <a id="1764.858" onclick="jumptoTime()">made</a>
 <a id="1766.398" onclick="jumptoTime()">a</a>
@@ -4915,10 +4933,10 @@
 <a id="1811.58" onclick="jumptoTime()">one</a>
 <a id="1811.72" onclick="jumptoTime()">thing.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_06</span>
-          <br>
-      <a id="1811.921" onclick="jumptoTime()">It</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_06</span>
+      <br>
+  <a id="1811.921" onclick="jumptoTime()">It</a>
 <a id="1813.122" onclick="jumptoTime()">just</a>
 <a id="1813.262" onclick="jumptoTime()">seems</a>
 <a id="1813.442" onclick="jumptoTime()">like</a>
@@ -4940,10 +4958,10 @@
 <a id="1818.607" onclick="jumptoTime()">so,</a>
 <a id="1818.887" onclick="jumptoTime()">um,</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_00</span>
-          <br>
-      <a id="1822.358" onclick="jumptoTime()">The</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_00</span>
+      <br>
+  <a id="1822.358" onclick="jumptoTime()">The</a>
 <a id="1822.478" onclick="jumptoTime()">way</a>
 <a id="1822.658" onclick="jumptoTime()">this</a>
 <a id="1823.699" onclick="jumptoTime()">is</a>
@@ -5067,10 +5085,10 @@
 <a id="1865.938" onclick="jumptoTime()">manage</a>
 <a id="1866.299" onclick="jumptoTime()">is.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_07</span>
-          <br>
-      <a id="1866.419" onclick="jumptoTime()">Okay,</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_07</span>
+      <br>
+  <a id="1866.419" onclick="jumptoTime()">Okay,</a>
 <a id="1866.779" onclick="jumptoTime()">so</a>
 <a id="1866.939" onclick="jumptoTime()">we</a>
 <a id="1867.019" onclick="jumptoTime()">will</a>
@@ -5116,20 +5134,20 @@
 <a id="1877.782" onclick="jumptoTime()">specific</a>
 <a id="1878.222" onclick="jumptoTime()">stages.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_04</span>
-          <br>
-      <a id="1878.583" onclick="jumptoTime()">Yeah.</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_04</span>
+      <br>
+  <a id="1878.583" onclick="jumptoTime()">Yeah.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_07</span>
-          <br>
-      <a id="1879.263" onclick="jumptoTime()">Problem.</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_07</span>
+      <br>
+  <a id="1879.263" onclick="jumptoTime()">Problem.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_04</span>
-          <br>
-      <a id="1880.202" onclick="jumptoTime()">That</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_04</span>
+      <br>
+  <a id="1880.202" onclick="jumptoTime()">That</a>
 <a id="1880.342" onclick="jumptoTime()">was</a>
 <a id="1880.462" onclick="jumptoTime()">one</a>
 <a id="1880.562" onclick="jumptoTime()">of</a>
@@ -5162,17 +5180,17 @@
 <a id="1890.845" onclick="jumptoTime()">this</a>
 <a id="1891.325" onclick="jumptoTime()">page.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_07</span>
-          <br>
-      <a id="1892.366" onclick="jumptoTime()">But</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_07</span>
+      <br>
+  <a id="1892.366" onclick="jumptoTime()">But</a>
 <a id="1892.526" onclick="jumptoTime()">quick</a>
 <a id="1892.726" onclick="jumptoTime()">question.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_04</span>
-          <br>
-      <a id="1895.546" onclick="jumptoTime()">No,</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_04</span>
+      <br>
+  <a id="1895.546" onclick="jumptoTime()">No,</a>
 <a id="1895.747" onclick="jumptoTime()">we're</a>
 <a id="1895.947" onclick="jumptoTime()">on</a>
 <a id="1896.067" onclick="jumptoTime()">top</a>
@@ -5213,10 +5231,10 @@
 <a id="1903.629" onclick="jumptoTime()">the</a>
 <a id="1903.709" onclick="jumptoTime()">colors?</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_07</span>
-          <br>
-      <a id="1906.016" onclick="jumptoTime()">I</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_07</span>
+      <br>
+  <a id="1906.016" onclick="jumptoTime()">I</a>
 <a id="1906.617" onclick="jumptoTime()">don't</a>
 <a id="1907.838" onclick="jumptoTime()">know.</a>
 <a id="1907.938" onclick="jumptoTime()">I</a>
@@ -5233,27 +5251,27 @@
 <a id="1910.2" onclick="jumptoTime()">fact</a>
 <a id="1910.44" onclick="jumptoTime()">that,</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_06</span>
-          <br>
-      <a id="1917.301" onclick="jumptoTime()">There's</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_06</span>
+      <br>
+  <a id="1917.301" onclick="jumptoTime()">There's</a>
 <a id="1917.541" onclick="jumptoTime()">no</a>
 <a id="1917.761" onclick="jumptoTime()">red</a>
 <a id="1918.061" onclick="jumptoTime()">on</a>
 <a id="1918.181" onclick="jumptoTime()">there.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_08</span>
-          <br>
-      <a id="1919.102" onclick="jumptoTime()">Oh,</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_08</span>
+      <br>
+  <a id="1919.102" onclick="jumptoTime()">Oh,</a>
 <a id="1919.222" onclick="jumptoTime()">you</a>
 <a id="1919.422" onclick="jumptoTime()">like</a>
 <a id="1919.702" onclick="jumptoTime()">that?</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_04</span>
-          <br>
-      <a id="1920.002" onclick="jumptoTime()">That's</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_04</span>
+      <br>
+  <a id="1920.002" onclick="jumptoTime()">That's</a>
 <a id="1920.242" onclick="jumptoTime()">what</a>
 <a id="1920.342" onclick="jumptoTime()">I</a>
 <a id="1920.382" onclick="jumptoTime()">was</a>
@@ -5264,10 +5282,10 @@
 <a id="1921.503" onclick="jumptoTime()">that?</a>
 <a id="1921.803" onclick="jumptoTime()">Okay.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_06</span>
-          <br>
-      <a id="1922.823" onclick="jumptoTime()">It's</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_06</span>
+      <br>
+  <a id="1922.823" onclick="jumptoTime()">It's</a>
 <a id="1923.103" onclick="jumptoTime()">not</a>
 <a id="1923.664" onclick="jumptoTime()">obviously</a>
 <a id="1924.324" onclick="jumptoTime()">negative.</a>
@@ -5336,10 +5354,10 @@
 <a id="1944.932" onclick="jumptoTime()">itself</a>
 <a id="1945.433" onclick="jumptoTime()">to...</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_00</span>
-          <br>
-      <a id="1947.032" onclick="jumptoTime()">working</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_00</span>
+      <br>
+  <a id="1947.032" onclick="jumptoTime()">working</a>
 <a id="1947.572" onclick="jumptoTime()">with</a>
 <a id="1948.012" onclick="jumptoTime()">you</a>
 <a id="1948.152" onclick="jumptoTime()">know</a>
@@ -5415,10 +5433,10 @@
 <a id="1969.677" onclick="jumptoTime()">better</a>
 <a id="1970.472" onclick="jumptoTime()">Yeah.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_04</span>
-          <br>
-      <a id="1971.412" onclick="jumptoTime()">I,</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_04</span>
+      <br>
+  <a id="1971.412" onclick="jumptoTime()">I,</a>
 <a id="1971.913" onclick="jumptoTime()">I,</a>
 <a id="1972.133" onclick="jumptoTime()">I,</a>
 <a id="1972.413" onclick="jumptoTime()">I</a>
@@ -5491,10 +5509,10 @@
 <a id="1987.96" onclick="jumptoTime()">yellow</a>
 <a id="1988.681" onclick="jumptoTime()">too.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_07</span>
-          <br>
-      <a id="1990.021" onclick="jumptoTime()">It</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_07</span>
+      <br>
+  <a id="1990.021" onclick="jumptoTime()">It</a>
 <a id="1990.101" onclick="jumptoTime()">is</a>
 <a id="1990.261" onclick="jumptoTime()">easy</a>
 <a id="1990.501" onclick="jumptoTime()">on</a>
@@ -5512,10 +5530,10 @@
 <a id="1993.363" onclick="jumptoTime()">So.</a>
 <a id="1994.643" onclick="jumptoTime()">Yeah.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_00</span>
-          <br>
-      <a id="1995.804" onclick="jumptoTime()">Uh,</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_00</span>
+      <br>
+  <a id="1995.804" onclick="jumptoTime()">Uh,</a>
 <a id="1996.872" onclick="jumptoTime()">Cool.</a>
 <a id="1997.332" onclick="jumptoTime()">Well,</a>
 <a id="1998.233" onclick="jumptoTime()">we're</a>
@@ -5786,10 +5804,10 @@
 <a id="2097.436" onclick="jumptoTime()">like</a>
 <a id="2097.756" onclick="jumptoTime()">it.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_05</span>
-          <br>
-      <a id="2098.736" onclick="jumptoTime()">So</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_05</span>
+      <br>
+  <a id="2098.736" onclick="jumptoTime()">So</a>
 <a id="2098.877" onclick="jumptoTime()">what's</a>
 <a id="2099.057" onclick="jumptoTime()">the</a>
 <a id="2099.157" onclick="jumptoTime()">difference</a>
@@ -5807,10 +5825,10 @@
 <a id="2102.558" onclick="jumptoTime()">under</a>
 <a id="2102.798" onclick="jumptoTime()">security?</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_00</span>
-          <br>
-      <a id="2104.318" onclick="jumptoTime()">This</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_00</span>
+      <br>
+  <a id="2104.318" onclick="jumptoTime()">This</a>
 <a id="2104.598" onclick="jumptoTime()">was</a>
 <a id="2104.858" onclick="jumptoTime()">the,</a>
 <a id="2107.359" onclick="jumptoTime()">honestly,</a>
@@ -5832,10 +5850,10 @@
 <a id="2113.701" onclick="jumptoTime()">under</a>
 <a id="2113.901" onclick="jumptoTime()">security.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_05</span>
-          <br>
-      <a id="2114.501" onclick="jumptoTime()">So</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_05</span>
+      <br>
+  <a id="2114.501" onclick="jumptoTime()">So</a>
 <a id="2114.641" onclick="jumptoTime()">this</a>
 <a id="2114.781" onclick="jumptoTime()">was</a>
 <a id="2114.861" onclick="jumptoTime()">like-</a>
@@ -5849,10 +5867,10 @@
 <a id="2117.182" onclick="jumptoTime()">of</a>
 <a id="2117.342" onclick="jumptoTime()">it?</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_00</span>
-          <br>
-      <a id="2118.622" onclick="jumptoTime()">Yeah,</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_00</span>
+      <br>
+  <a id="2118.622" onclick="jumptoTime()">Yeah,</a>
 <a id="2119.163" onclick="jumptoTime()">this</a>
 <a id="2119.383" onclick="jumptoTime()">is</a>
 <a id="2119.563" onclick="jumptoTime()">mine.</a>
@@ -5872,16 +5890,16 @@
 <a id="2122.323" onclick="jumptoTime()">original</a>
 <a id="2122.824" onclick="jumptoTime()">statements.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_08</span>
-          <br>
-      <a id="2123.524" onclick="jumptoTime()">Got</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_08</span>
+      <br>
+  <a id="2123.524" onclick="jumptoTime()">Got</a>
 <a id="2123.904" onclick="jumptoTime()">it.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_00</span>
-          <br>
-      <a id="2124.636" onclick="jumptoTime()">you</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_00</span>
+      <br>
+  <a id="2124.636" onclick="jumptoTime()">you</a>
 <a id="2124.756" onclick="jumptoTime()">know,</a>
 <a id="2125.096" onclick="jumptoTime()">automate</a>
 <a id="2125.476" onclick="jumptoTime()">nearly</a>
@@ -6088,10 +6106,10 @@
 <a id="2196.394" onclick="jumptoTime()">with</a>
 <a id="2196.554" onclick="jumptoTime()">confidence.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_05</span>
-          <br>
-      <a id="2197.611" onclick="jumptoTime()">No,</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_05</span>
+      <br>
+  <a id="2197.611" onclick="jumptoTime()">No,</a>
 <a id="2197.771" onclick="jumptoTime()">but</a>
 <a id="2197.931" onclick="jumptoTime()">you</a>
 <a id="2198.072" onclick="jumptoTime()">can</a>
@@ -6113,10 +6131,10 @@
 <a id="2201.335" onclick="jumptoTime()">last</a>
 <a id="2201.695" onclick="jumptoTime()">one.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_00</span>
-          <br>
-      <a id="2201.815" onclick="jumptoTime()">Yeah,</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_00</span>
+      <br>
+  <a id="2201.815" onclick="jumptoTime()">Yeah,</a>
 <a id="2202.736" onclick="jumptoTime()">I</a>
 <a id="2202.796" onclick="jumptoTime()">agree.</a>
 <a id="2204.358" onclick="jumptoTime()">That's</a>
@@ -6147,10 +6165,10 @@
 <a id="2211.885" onclick="jumptoTime()">as</a>
 <a id="2212.025" onclick="jumptoTime()">well.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_06</span>
-          <br>
-      <a id="2213.907" onclick="jumptoTime()">Yeah,</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_06</span>
+      <br>
+  <a id="2213.907" onclick="jumptoTime()">Yeah,</a>
 <a id="2214.107" onclick="jumptoTime()">the</a>
 <a id="2214.228" onclick="jumptoTime()">only</a>
 <a id="2214.448" onclick="jumptoTime()">thing</a>
@@ -6204,10 +6222,10 @@
 <a id="2230.366" onclick="jumptoTime()">yeah,</a>
 <a id="2230.666" onclick="jumptoTime()">good.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_02</span>
-          <br>
-      <a id="2232.228" onclick="jumptoTime()">Cindy's</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_02</span>
+      <br>
+  <a id="2232.228" onclick="jumptoTime()">Cindy's</a>
 <a id="2232.648" onclick="jumptoTime()">last</a>
 <a id="2232.948" onclick="jumptoTime()">blog</a>
 <a id="2233.269" onclick="jumptoTime()">post</a>
@@ -6253,10 +6271,10 @@
 <a id="2245.592" onclick="jumptoTime()">copied</a>
 <a id="2245.832" onclick="jumptoTime()">it.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_05</span>
-          <br>
-      <a id="2245.893" onclick="jumptoTime()">And</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_05</span>
+      <br>
+  <a id="2245.893" onclick="jumptoTime()">And</a>
 <a id="2246.013" onclick="jumptoTime()">it's</a>
 <a id="2246.113" onclick="jumptoTime()">deliverables.</a>
 <a id="2247.133" onclick="jumptoTime()">Secure</a>
@@ -6267,10 +6285,10 @@
 <a id="2248.533" onclick="jumptoTime()">its</a>
 <a id="2248.673" onclick="jumptoTime()">deliverables.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_02</span>
-          <br>
-      <a id="2249.773" onclick="jumptoTime()">Yeah,</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_02</span>
+      <br>
+  <a id="2249.773" onclick="jumptoTime()">Yeah,</a>
 <a id="2250.013" onclick="jumptoTime()">and</a>
 <a id="2250.153" onclick="jumptoTime()">I</a>
 <a id="2250.233" onclick="jumptoTime()">thought</a>
@@ -6289,10 +6307,10 @@
 <a id="2253.374" onclick="jumptoTime()">nice.</a>
 <a id="2254.114" onclick="jumptoTime()">Yeah.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_05</span>
-          <br>
-      <a id="2256.615" onclick="jumptoTime()">Yeah,</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_05</span>
+      <br>
+  <a id="2256.615" onclick="jumptoTime()">Yeah,</a>
 <a id="2256.975" onclick="jumptoTime()">so</a>
 <a id="2257.135" onclick="jumptoTime()">you</a>
 <a id="2257.255" onclick="jumptoTime()">could</a>
@@ -6313,10 +6331,10 @@
 <a id="2264.417" onclick="jumptoTime()">both</a>
 <a id="2265.517" onclick="jumptoTime()">thoughts.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_00</span>
-          <br>
-      <a id="2271.55" onclick="jumptoTime()">I'm</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_00</span>
+      <br>
+  <a id="2271.55" onclick="jumptoTime()">I'm</a>
 <a id="2271.69" onclick="jumptoTime()">not</a>
 <a id="2271.87" onclick="jumptoTime()">a</a>
 <a id="2271.93" onclick="jumptoTime()">big</a>
@@ -6333,10 +6351,10 @@
 <a id="2276.013" onclick="jumptoTime()">say</a>
 <a id="2276.213" onclick="jumptoTime()">like.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_06</span>
-          <br>
-      <a id="2277.674" onclick="jumptoTime()">Your</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_06</span>
+      <br>
+  <a id="2277.674" onclick="jumptoTime()">Your</a>
 <a id="2277.854" onclick="jumptoTime()">software</a>
 <a id="2278.234" onclick="jumptoTime()">factory</a>
 <a id="2278.614" onclick="jumptoTime()">and</a>
@@ -6349,19 +6367,19 @@
 <a id="2282.016" onclick="jumptoTime()">your</a>
 <a id="2282.196" onclick="jumptoTime()">product.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_05</span>
-          <br>
-      <a id="2283.917" onclick="jumptoTime()">Product</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_05</span>
+      <br>
+  <a id="2283.917" onclick="jumptoTime()">Product</a>
 <a id="2284.538" onclick="jumptoTime()">sounds</a>
 <a id="2284.958" onclick="jumptoTime()">like</a>
 <a id="2286.079" onclick="jumptoTime()">car</a>
 <a id="2286.339" onclick="jumptoTime()">manufacturer.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_07</span>
-          <br>
-      <a id="2287.039" onclick="jumptoTime()">You</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_07</span>
+      <br>
+  <a id="2287.039" onclick="jumptoTime()">You</a>
 <a id="2287.259" onclick="jumptoTime()">could</a>
 <a id="2287.419" onclick="jumptoTime()">say</a>
 <a id="2287.7" onclick="jumptoTime()">IP</a>
@@ -6379,20 +6397,20 @@
 <a id="2291.062" onclick="jumptoTime()">always</a>
 <a id="2291.362" onclick="jumptoTime()">shorthand.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_00</span>
-          <br>
-      <a id="2292.622" onclick="jumptoTime()">Yeah.</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_00</span>
+      <br>
+  <a id="2292.622" onclick="jumptoTime()">Yeah.</a>
 <a id="2294.383" onclick="jumptoTime()">I</a>
 <a id="2294.624" onclick="jumptoTime()">like</a>
 <a id="2294.804" onclick="jumptoTime()">this</a>
 <a id="2295.024" onclick="jumptoTime()">one</a>
 <a id="2295.184" onclick="jumptoTime()">better.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_05</span>
-          <br>
-      <a id="2295.484" onclick="jumptoTime()">Yeah,</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_05</span>
+      <br>
+  <a id="2295.484" onclick="jumptoTime()">Yeah,</a>
 <a id="2299.567" onclick="jumptoTime()">I</a>
 <a id="2299.667" onclick="jumptoTime()">think</a>
 <a id="2299.847" onclick="jumptoTime()">I</a>
@@ -6405,10 +6423,10 @@
 <a id="2302.859" onclick="jumptoTime()">thought,</a>
 <a id="2303.539" onclick="jumptoTime()">Brian.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_00</span>
-          <br>
-      <a id="2306.601" onclick="jumptoTime()">And</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_00</span>
+      <br>
+  <a id="2306.601" onclick="jumptoTime()">And</a>
 <a id="2306.721" onclick="jumptoTime()">then</a>
 <a id="2307.881" onclick="jumptoTime()">the</a>
 <a id="2308.021" onclick="jumptoTime()">last</a>
@@ -6509,10 +6527,10 @@
 <a id="2340.57" onclick="jumptoTime()">you</a>
 <a id="2340.731" onclick="jumptoTime()">get.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_05</span>
-          <br>
-      <a id="2340.971" onclick="jumptoTime()">Um,</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_05</span>
+      <br>
+  <a id="2340.971" onclick="jumptoTime()">Um,</a>
 <a id="2342.832" onclick="jumptoTime()">I</a>
 <a id="2342.952" onclick="jumptoTime()">like</a>
 <a id="2343.172" onclick="jumptoTime()">your</a>
@@ -6529,10 +6547,10 @@
 <a id="2346.394" onclick="jumptoTime()">on</a>
 <a id="2346.554" onclick="jumptoTime()">track.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_00</span>
-          <br>
-      <a id="2347.954" onclick="jumptoTime()">Yeah.</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_00</span>
+      <br>
+  <a id="2347.954" onclick="jumptoTime()">Yeah.</a>
 <a id="2348.255" onclick="jumptoTime()">So</a>
 <a id="2348.515" onclick="jumptoTime()">I</a>
 <a id="2348.575" onclick="jumptoTime()">was</a>
@@ -6695,10 +6713,10 @@
 <a id="2394.592" onclick="jumptoTime()">it</a>
 <a id="2394.732" onclick="jumptoTime()">either.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_07</span>
-          <br>
-      <a id="2394.972" onclick="jumptoTime()">Did</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_07</span>
+      <br>
+  <a id="2394.972" onclick="jumptoTime()">Did</a>
 <a id="2395.793" onclick="jumptoTime()">you</a>
 <a id="2396.013" onclick="jumptoTime()">just</a>
 <a id="2396.373" onclick="jumptoTime()">open</a>
@@ -6719,10 +6737,10 @@
 <a id="2402.958" onclick="jumptoTime()">of</a>
 <a id="2403.038" onclick="jumptoTime()">GitLab.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_00</span>
-          <br>
-      <a id="2406.976" onclick="jumptoTime()">You're</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_00</span>
+      <br>
+  <a id="2406.976" onclick="jumptoTime()">You're</a>
 <a id="2408.136" onclick="jumptoTime()">our</a>
 <a id="2408.237" onclick="jumptoTime()">new</a>
 <a id="2408.397" onclick="jumptoTime()">Ricky</a>
@@ -6771,10 +6789,10 @@
 <a id="2421.002" onclick="jumptoTime()">more</a>
 <a id="2421.182" onclick="jumptoTime()">speed.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_03</span>
-          <br>
-      <a id="2421.462" onclick="jumptoTime()">Do</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_03</span>
+      <br>
+  <a id="2421.462" onclick="jumptoTime()">Do</a>
 <a id="2421.542" onclick="jumptoTime()">you</a>
 <a id="2421.722" onclick="jumptoTime()">want</a>
 <a id="2421.902" onclick="jumptoTime()">to</a>
@@ -6809,10 +6827,10 @@
 <a id="2431.547" onclick="jumptoTime()">less</a>
 <a id="2431.887" onclick="jumptoTime()">risk.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_07</span>
-          <br>
-      <a id="2433.21" onclick="jumptoTime()">confidence</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_07</span>
+      <br>
+  <a id="2433.21" onclick="jumptoTime()">confidence</a>
 <a id="2434.59" onclick="jumptoTime()">is</a>
 <a id="2434.831" onclick="jumptoTime()">kind</a>
 <a id="2435.011" onclick="jumptoTime()">of</a>
@@ -6871,10 +6889,10 @@
 <a id="2455.156" onclick="jumptoTime()">no</a>
 <a id="2455.376" onclick="jumptoTime()">trade-offs</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_00</span>
-          <br>
-      <a id="2456.846" onclick="jumptoTime()">The</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_00</span>
+      <br>
+  <a id="2456.846" onclick="jumptoTime()">The</a>
 <a id="2457.646" onclick="jumptoTime()">engineer</a>
 <a id="2458.107" onclick="jumptoTime()">in</a>
 <a id="2458.187" onclick="jumptoTime()">me</a>
@@ -6910,10 +6928,10 @@
 <a id="2469.692" onclick="jumptoTime()">say</a>
 <a id="2469.832" onclick="jumptoTime()">no.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_07</span>
-          <br>
-      <a id="2469.892" onclick="jumptoTime()">You</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_07</span>
+      <br>
+  <a id="2469.892" onclick="jumptoTime()">You</a>
 <a id="2470.112" onclick="jumptoTime()">have</a>
 <a id="2470.512" onclick="jumptoTime()">some</a>
 <a id="2470.672" onclick="jumptoTime()">leeway</a>
@@ -6927,10 +6945,10 @@
 <a id="2473.133" onclick="jumptoTime()">you</a>
 <a id="2473.253" onclick="jumptoTime()">know.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_05</span>
-          <br>
-      <a id="2474.054" onclick="jumptoTime()">How</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_05</span>
+      <br>
+  <a id="2474.054" onclick="jumptoTime()">How</a>
 <a id="2474.174" onclick="jumptoTime()">about</a>
 <a id="2474.434" onclick="jumptoTime()">just</a>
 <a id="2474.734" onclick="jumptoTime()">more</a>
@@ -6940,15 +6958,15 @@
 <a id="2476.175" onclick="jumptoTime()">with</a>
 <a id="2476.495" onclick="jumptoTime()">confidence?</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_07</span>
-          <br>
-      <a id="2482.457" onclick="jumptoTime()">Yeah.</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_07</span>
+      <br>
+  <a id="2482.457" onclick="jumptoTime()">Yeah.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_06</span>
-          <br>
-      <a id="2485.139" onclick="jumptoTime()">More</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_06</span>
+      <br>
+  <a id="2485.139" onclick="jumptoTime()">More</a>
 <a id="2485.339" onclick="jumptoTime()">speed.</a>
 <a id="2488.459" onclick="jumptoTime()">The</a>
 <a id="2488.619" onclick="jumptoTime()">Ricky</a>
@@ -6964,15 +6982,15 @@
 <a id="2490.881" onclick="jumptoTime()">there,</a>
 <a id="2491.041" onclick="jumptoTime()">Parker.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_08</span>
-          <br>
-      <a id="2491.822" onclick="jumptoTime()">Yeah.</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_08</span>
+      <br>
+  <a id="2491.822" onclick="jumptoTime()">Yeah.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_00</span>
-          <br>
-      <a id="2492.643" onclick="jumptoTime()">Oh,</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_00</span>
+      <br>
+  <a id="2492.643" onclick="jumptoTime()">Oh,</a>
 <a id="2493.264" onclick="jumptoTime()">was</a>
 <a id="2493.444" onclick="jumptoTime()">that</a>
 <a id="2493.684" onclick="jumptoTime()">from...</a>
@@ -6983,10 +7001,10 @@
 <a id="2495.746" onclick="jumptoTime()">have</a>
 <a id="2495.866" onclick="jumptoTime()">been.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_06</span>
-          <br>
-      <a id="2496.086" onclick="jumptoTime()">It's</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_06</span>
+      <br>
+  <a id="2496.086" onclick="jumptoTime()">It's</a>
 <a id="2496.206" onclick="jumptoTime()">something</a>
 <a id="2496.527" onclick="jumptoTime()">Ricky</a>
 <a id="2496.807" onclick="jumptoTime()">Bobby</a>
@@ -7002,10 +7020,10 @@
 <a id="2499.449" onclick="jumptoTime()">they</a>
 <a id="2499.629" onclick="jumptoTime()">should.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_07</span>
-          <br>
-      <a id="2499.87" onclick="jumptoTime()">That's</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_07</span>
+      <br>
+  <a id="2499.87" onclick="jumptoTime()">That's</a>
 <a id="2500.39" onclick="jumptoTime()">the</a>
 <a id="2500.51" onclick="jumptoTime()">homework</a>
 <a id="2500.871" onclick="jumptoTime()">for</a>
@@ -7023,10 +7041,10 @@
 <a id="2505.535" onclick="jumptoTime()">social</a>
 <a id="2505.855" onclick="jumptoTime()">report.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_00</span>
-          <br>
-      <a id="2506.616" onclick="jumptoTime()">I</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_00</span>
+      <br>
+  <a id="2506.616" onclick="jumptoTime()">I</a>
 <a id="2506.756" onclick="jumptoTime()">often</a>
 <a id="2507.076" onclick="jumptoTime()">say...</a>
 <a id="2508.052" onclick="jumptoTime()">Thank</a>
@@ -7070,10 +7088,10 @@
 <a id="2519.259" onclick="jumptoTime()">really</a>
 <a id="2519.559" onclick="jumptoTime()">weird.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_06</span>
-          <br>
-      <a id="2520.66" onclick="jumptoTime()">And</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_06</span>
+      <br>
+  <a id="2520.66" onclick="jumptoTime()">And</a>
 <a id="2521.321" onclick="jumptoTime()">then</a>
 <a id="2521.541" onclick="jumptoTime()">next</a>
 <a id="2521.801" onclick="jumptoTime()">week</a>
@@ -7086,10 +7104,10 @@
 <a id="2524.643" onclick="jumptoTime()">great</a>
 <a id="2525.003" onclick="jumptoTime()">one.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_00</span>
-          <br>
-      <a id="2525.243" onclick="jumptoTime()">So</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_00</span>
+      <br>
+  <a id="2525.243" onclick="jumptoTime()">So</a>
 <a id="2525.403" onclick="jumptoTime()">much</a>
 <a id="2525.603" onclick="jumptoTime()">room</a>
 <a id="2525.803" onclick="jumptoTime()">for</a>
@@ -7130,10 +7148,10 @@
 <a id="2542.365" onclick="jumptoTime()">it's</a>
 <a id="2542.566" onclick="jumptoTime()">strong.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_07</span>
-          <br>
-      <a id="2543.126" onclick="jumptoTime()">All</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_07</span>
+      <br>
+  <a id="2543.126" onclick="jumptoTime()">All</a>
 <a id="2543.266" onclick="jumptoTime()">those</a>
 <a id="2543.506" onclick="jumptoTime()">are,</a>
 <a id="2544.046" onclick="jumptoTime()">you</a>
@@ -7142,10 +7160,10 @@
 <a id="2545.986" onclick="jumptoTime()">are</a>
 <a id="2546.106" onclick="jumptoTime()">good.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_00</span>
-          <br>
-      <a id="2547.166" onclick="jumptoTime()">Awesome.</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_00</span>
+      <br>
+  <a id="2547.166" onclick="jumptoTime()">Awesome.</a>
 <a id="2547.706" onclick="jumptoTime()">Well,</a>
 <a id="2548.567" onclick="jumptoTime()">this</a>
 <a id="2548.707" onclick="jumptoTime()">was</a>
@@ -7167,10 +7185,10 @@
 <a id="2554.368" onclick="jumptoTime()">it</a>
 <a id="2554.448" onclick="jumptoTime()">rocking.</a>
 </div>
-        <div class="data-block" style="background-color: white">
-          <span style="color: orange">SPEAKER_07</span>
-          <br>
-      <a id="2558.561" onclick="jumptoTime()">Good</a>
+    <div class="data-block" style="background-color: white">
+      <span style="color: orange">SPEAKER_07</span>
+      <br>
+  <a id="2558.561" onclick="jumptoTime()">Good</a>
 <a id="2558.703" onclick="jumptoTime()">to</a>
 <a id="2558.825" onclick="jumptoTime()">see</a>
 <a id="2558.987" onclick="jumptoTime()">everybody.</a>
@@ -7178,6 +7196,5 @@
 <a id="2559.494" onclick="jumptoTime()">you</a>
 <a id="2559.616" onclick="jumptoTime()">soon.</a>
 
-      </body>
-    </html>
-  
+  </body>
+</html>
