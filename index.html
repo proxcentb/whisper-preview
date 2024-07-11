@@ -35,7 +35,7 @@
       }
     </style>
     <script>
-      const jumptoTime = () => document.getElementById('video').currentTime = Number(event.target.id);
+      const jumptoTime = () => document.getElementById('player').currentTime = Number(event.target.id);
       const getDialog = async (json) => {
         const speakersConfigMap = {};
         for (let i = 0; i < 50; i++) {
@@ -46,14 +46,16 @@
         }
 
         let prevSpeaker = '';
+        let lastExistingSpeaker = 0;
         let lastExistingWordScore = 0;
         let lastExistingWordStart = 0;
         const dialogNode = document.createElement('div');
         dialogNode.id = 'dialog';
         dialogNode.style.display = 'inline-block';
         for (const { words, speaker: rawSpeaker } of json.segments) {
-          if (prevSpeaker !== rawSpeaker) {
-            const { speaker, boxColor, speakerColor } = speakersConfigMap[rawSpeaker];
+          if (rawSpeaker !== undefined) lastExistingSpeaker = rawSpeaker;
+          if (prevSpeaker !== lastExistingSpeaker) {
+            const { speaker, boxColor } = speakersConfigMap[lastExistingSpeaker];
             dialogNode.insertAdjacentHTML("beforeend", `
               <div class="data-block" style="background-color: ${boxColor}">
                 <span style="color: #454545">${speaker}</span>
@@ -61,7 +63,7 @@
               </div>
             `);
 
-            prevSpeaker = rawSpeaker;
+            prevSpeaker = lastExistingSpeaker;
           }
 
           for ({ start, word, score } of words) {
@@ -69,7 +71,7 @@
               lastExistingWordStart = start;
               lastExistingWordScore = score;
             }
-            dialogNode.lastElementChild.insertAdjacentHTML("beforeend", `<a class="word" style="color: hsl(${lastExistingWordScore * 100},50%,50%);" id="${lastExistingWordStart}" onclick="jumptoTime()">${word}</a>`);
+            dialogNode.lastElementChild.insertAdjacentHTML("beforeend", `<a class="word" style="color: hsl(${lastExistingWordScore * 100},50%,50%);" id="${lastExistingWordStart}" onclick="jumptoTime()">${word}</a> `);
           }
         }
 
@@ -98,8 +100,24 @@
 
       const onInputVideo = event => {
         const media = URL.createObjectURL(event.target.files[0]);
-        const video = document.getElementById("video");
-        video.src = media;
+        const prevNode = document.getElementById("player");
+        if (['mpg', 'mp2', 'mpeg', 'mpe', 'mpv', 'mp4'].includes(event.target.files[0].name.split('.').at(-1))) {
+          const video = document.createElement('video');
+          video.id = prevNode.id;
+          video.style = "width: 45vw; position: sticky; float: right; top: 20px; padding: 5px 30px; box-sizing: border-box;";
+          video.src = media;
+          video.controls = true;
+          video.ontimeupdate = prevNode.ontimeupdate;
+          prevNode.replaceWith(video);
+        } else {
+          const audio = document.createElement('audio');
+          audio.id = prevNode.id;
+          audio.style = "width: 45vw; position: sticky; float: right; top: 20px; padding: 5px 30px; box-sizing: border-box;";
+          audio.src = media;
+          audio.controls = true;
+          audio.ontimeupdate = prevNode.ontimeupdate;
+          prevNode.replaceWith(audio);
+        }
       }
     </script>
   </head>
@@ -110,12 +128,11 @@
         <span>Select JSON file</span>
       </label>
       <label class="input-file data-block">
-        <input type="file" onchange="onInputVideo(event)" accept=".mp4">		
-        <span>Select video file</span>
+        <input type="file" onchange="onInputVideo(event)" accept="audio/*,video/*">		
+        <span>Select video/audio file</span>
       </label>
     </div>
     <div id="dialog" style="display: inline-block"></div>
-    <video ontimeupdate="updateBg(this.currentTime)" id="video" controls style="width: 45vw; position: sticky; float: right; top: 20px; padding: 5px 30px;">
-    </video>
+    <div id="player" ontimeupdate="updateBg(this.currentTime)"></div>
   </body>
 </html>
