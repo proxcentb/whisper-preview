@@ -1,0 +1,121 @@
+<html lang="en">
+  <head>
+    <style>
+      .data-block {
+        border-radius: 10px;
+        padding: 5px 30px;
+        margin-bottom: 10px;
+        max-width: 45vw;
+      }
+      .highlighted {
+        background: #5f5353;
+        border-radius: 5px;
+      }
+      .word {
+        display: inline-block;
+        padding: 0 2px;
+      }
+      .input-file {
+        display: flex;
+      }
+      .input-file span {
+        cursor: pointer;
+        color: rgb(255 255 255);
+        background-color: #419152;
+        padding: 10px 20px;
+        text-align: center;
+        width: 50vw;
+      }
+      .input-file input[type=file] {
+        width: 0;
+        height: 0;
+      }
+      .input-file:hover span {
+        background-color: #59be6e;
+      }
+    </style>
+    <script>
+      const jumptoTime = () => document.getElementById('video').currentTime = Number(event.target.id);
+      const getDialog = async (json) => {
+        const speakersConfigMap = {};
+        for (let i = 0; i < 50; i++) {
+          speakersConfigMap[`SPEAKER_${String(i).padStart(2, '0')}`] = {
+            speaker: `Speaker ${i}`,
+            boxColor: ['white', '#e2eef2', '#f2f7d2', '#f7d6d2', '#f2e2ef'][i % 5],
+          }
+        }
+
+        let prevSpeaker = '';
+        let lastExistingWordScore = 0;
+        let lastExistingWordStart = 0;
+        const dialogNode = document.createElement('div');
+        dialogNode.id = 'dialog';
+        dialogNode.style.display = 'inline-block';
+        for (const { words, speaker: rawSpeaker } of json.segments) {
+          if (prevSpeaker !== rawSpeaker) {
+            const { speaker, boxColor, speakerColor } = speakersConfigMap[rawSpeaker];
+            dialogNode.insertAdjacentHTML("beforeend", `
+              <div class="data-block" style="background-color: ${boxColor}">
+                <span style="color: #454545">${speaker}</span>
+                <br>
+              </div>
+            `);
+
+            prevSpeaker = rawSpeaker;
+          }
+
+          for ({ start, word, score } of words) {
+            if (start !== undefined) {
+              lastExistingWordStart = start;
+              lastExistingWordScore = score;
+            }
+            dialogNode.lastElementChild.insertAdjacentHTML("beforeend", `<a class="word" style="color: hsl(${lastExistingWordScore * 100},50%,50%);" id="${lastExistingWordStart}" onclick="jumptoTime()">${word}</a>`);
+          }
+        }
+
+        document.getElementById('dialog').replaceWith(dialogNode);
+      }
+
+      let highlightedElement = null;
+      const updateBg = (time) => {
+        const words = Array.from(document.querySelectorAll('a'));
+        for (let i = 0; i < words.length; i++) {
+          const el = words[i];
+          if (highlightedElement !== el && el.id && Number(el.id) > Number(time)) {
+            if (highlightedElement) highlightedElement.classList.remove('highlighted')
+            highlightedElement = words[i - 1];
+            highlightedElement.classList.add('highlighted')
+            break;
+          }
+        }
+      }
+
+      const onInputJSON = event => {
+        const reader = new FileReader();
+        reader.readAsText(event.target.files[0], "UTF-8");
+        reader.onload = e => getDialog(JSON.parse(e.target.result))
+      }
+
+      const onInputVideo = event => {
+        const media = URL.createObjectURL(event.target.files[0]);
+        const video = document.getElementById("video");
+        video.src = media;
+      }
+    </script>
+  </head>
+  <body onload="getDialog()" style="font-family: sans-serif; font-size: 18px; background-color: #efe7dd; margin: 0">
+    <div style="display: flex; flex-direction: row; justify-content: space-between">
+      <label class="input-file data-block">
+        <input type="file" onchange="onInputJSON(event)" accept=".json">		
+        <span>Select JSON file</span>
+      </label>
+      <label class="input-file data-block">
+        <input type="file" onchange="onInputVideo(event)" accept=".mp4">		
+        <span>Select video file</span>
+      </label>
+    </div>
+    <div id="dialog" style="display: inline-block"></div>
+    <video ontimeupdate="updateBg(this.currentTime)" id="video" controls style="width: 45vw; position: sticky; float: right; top: 20px; padding: 5px 30px;">
+    </video>
+  </body>
+</html>
